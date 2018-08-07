@@ -15,5 +15,8 @@ export enum RootActions {
     OrganisationInfoFulfilled = 'RootActions.OrganisationInfoFulfilled',
 
     RepoInfoRequested = 'RootActions.RepoInfoRequested',
-    RepoInfoFulfilled = 'RootActions.RepoInfoFulfilled'
+    RepoInfoFulfilled = 'RootActions.RepoInfoFulfilled',
+
+    RepoContributorsRequested = 'RootActions.RepoContributorsRequested',
+    RepoContributorsFulfilled = 'RootActions.RepoContributorsFulfilled'
 }

@@ -1,6 +1,7 @@
-import {IRepo} from 'src/interfaces/IRepo';
+import {IRepoInfo} from 'src/interfaces/IRepoInfo';
 
 export interface ISidebarViewData {
+    repoInfo: IRepoInfo;
     organisationId: string;
-    repos: IRepo[];
+    repos: IRepoInfo[];
 }

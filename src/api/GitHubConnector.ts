@@ -17,7 +17,12 @@ export const getOrganisationRepos = async (organisationId: string, pageNumber: n
         });
 };
 
-export const getRepoInfo = async (repoName: string) => {
-    return fetch(`${Config.BasePath}/repos/facebook/${repoName}`)
+export const getRepoInfo = async (organisationId: string, repoName: string) => {
+    return fetch(`${Config.BasePath}/repos/${organisationId}/${repoName}`)
+        .then((resp: Response) => resp.json());
+};
+
+export const getRepoContributors = async (organisationId: string, repoName: string) => {
+    return fetch(`${Config.BasePath}/repos/${organisationId}/${repoName}/contributors`)
         .then((resp: Response) => resp.json());
 };

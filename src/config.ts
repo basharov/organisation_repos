@@ -1,6 +1,7 @@
 export interface IConfig {
     BasePath: string;
     Organisations: { [key: string]: string };
+    DefaultOrganisationId: string;
 }
 
 export const Config: IConfig = {
@@ -8,5 +9,6 @@ export const Config: IConfig = {
     Organisations: {
         facebook: 'Facebook',
         twitter: 'Twitter'
-    }
+    },
+    DefaultOrganisationId: 'facebook'
 };

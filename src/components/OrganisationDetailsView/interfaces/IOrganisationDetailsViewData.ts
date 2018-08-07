@@ -1,5 +1,5 @@
-import {IRepo} from 'src/interfaces/IRepo';
+import {IOrganisationInfo} from '../../../interfaces/IOrganisationInfo';
 
 export interface IOrganisationDetailsViewData {
-    repo: IRepo | null;
+    organisationInfo: IOrganisationInfo;
 }

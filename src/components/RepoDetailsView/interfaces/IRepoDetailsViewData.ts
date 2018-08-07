@@ -1,5 +1,7 @@
-import {IRepo} from 'src/interfaces/IRepo';
+import {IRepoInfo} from '../../../interfaces/IRepoInfo';
+import {IContributor} from '../../../interfaces/IContributor';
 
 export interface IRepoDetailsViewData {
-    repo: IRepo | null;
+    repoInfo: IRepoInfo;
+    repoContributors: IContributor[];
 }

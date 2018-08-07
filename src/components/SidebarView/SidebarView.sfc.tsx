@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {SFC} from 'react';
-import {ListLink, SidebarViewWrapper} from './SidebarView.style';
+import {ActiveLabel, ListLink, SidebarViewWrapper} from './SidebarView.style';
 import {ISidebarViewData} from './interfaces/ISidebarViewData';
 import {ISidebarViewActions} from './interfaces/ISidebarViewActions';
-import {IRepo} from '../../interfaces/IRepo';
+import {IRepoInfo} from '../../interfaces/IRepoInfo';
 
 interface ISidebarViewProps {
     data: ISidebarViewData;
@@ -17,13 +17,18 @@ export const SidebarView: SFC<ISidebarViewProps> = (props) =>
     </SidebarViewWrapper>;
 
 const getReposTitles = (props: ISidebarViewProps) => {
-    return props.data.repos.map((repo: IRepo, index: number) => {
+
+    return props.data.repos.map((repo: IRepoInfo, index: number) => {
             const loc = {
                 pathname: `/org/${props.data.organisationId}/${repo.name}`,
-                state: {view: 'RepoRoute'}
+                state: {view: 'RepoRoute', organisationId: props.data.organisationId, repoId: repo.name}
             };
 
-            return <ListLink key={index} to={loc}>{repo.name}</ListLink>;
+            return props.data.repoInfo.name === repo.name
+                ?
+                <ActiveLabel key={index}>{repo.name}</ActiveLabel>
+                :
+                <ListLink key={index} to={loc}>{repo.name}</ListLink>;
         }
     );
 };

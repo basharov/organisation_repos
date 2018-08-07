@@ -8,24 +8,46 @@ export function* routeChangedSaga () {
 }
 
 function* fetchData (action: any) {
-    console.log(action);
     // const params = new URLSearchParams(action.payload.search);
 
     const routeName = action.payload.state && action.payload.state.view;
-    console.log(routeName)
+
+    let payload = {};
 
     switch (routeName) {
 
         case 'OrganisationRoute':
+
+            payload = {organisationId: action.payload.state.organisationId};
+
             yield put({
                 type: RootActions.OrganisationInfoRequested,
-                payload: {organisationId: action.payload.state.organisationId}
+                payload
             });
-            yield put({type: RootActions.ReposRequested, payload: {organisationId: action.payload.state.organisationId}});
+            yield put({
+                type: RootActions.ReposRequested,
+                payload
+            });
             break;
 
         case 'RepoRoute':
-            yield put({type: RootActions.RepoInfoRequested});
+
+            payload = {
+                organisationId: action.payload.state.organisationId,
+                repoId: action.payload.state.repoId
+            };
+
+
+            yield put({
+                type: RootActions.RepoInfoRequested,
+                payload
+            });
+
+            yield put({
+                type: RootActions.RepoContributorsRequested,
+                payload
+            });
+
             break;
 
     }

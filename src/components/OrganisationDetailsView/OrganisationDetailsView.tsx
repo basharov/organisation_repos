@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {OrganisationDetailsViewArea} from './OrganisationDetailsView.style';
+import {OrganisationDetailsViewArea, OrganisationLogo} from './OrganisationDetailsView.style';
 import {IOrganisationDetailsViewData} from './interfaces/IOrganisationDetailsViewData';
-import {IOrganisationDetailsViewActions} from './interfaces/IOrganisationDetailsViewActions';
 
 export interface IOrganisationDetailsViewProps {
     data: IOrganisationDetailsViewData;
-    actions: IOrganisationDetailsViewActions;
+    // actions: IOrganisationDetailsViewActions;
 }
 
 export class OrganisationDetailsView extends Component<IOrganisationDetailsViewProps> {
@@ -14,20 +13,17 @@ export class OrganisationDetailsView extends Component<IOrganisationDetailsViewP
 
     public render () {
 
+        const {organisationInfo} = this.props.data;
+
         return (
             <OrganisationDetailsViewArea>
-                Organisation details
-                {
-                    /*
-                                        this.props.isLoading
-                                            ?
-                                            <div>spinner</div>
-                                            :
-                                            <>
-                                                <h1>Project Details</h1>
-                                            </>
-                    */
-                }
+                <OrganisationLogo
+                    src={organisationInfo.avatar_url}
+                    alt={organisationInfo.name}
+                />
+
+                <p>{organisationInfo.name}</p>
+                <p>{organisationInfo.description}</p>
 
 
             </OrganisationDetailsViewArea>

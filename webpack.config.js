@@ -80,9 +80,10 @@ module.exports = {
     }
 };
 
+/*
 module.exports.serve = {
     content: [__dirname],
     add: (app, middleware, options) => {
         app.use(convert(history({})));
     },
-};
+};*/

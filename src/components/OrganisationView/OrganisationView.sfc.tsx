@@ -2,7 +2,7 @@ import * as React from 'react';
 import {SFC} from 'react';
 import {SidebarView} from '../SidebarView/SidebarView.sfc';
 import {OrganisationViewArea} from './OrganisationView.style';
-import {RepoDetailsView} from '../RepoDetailsView/RepoDetailsView';
+import {RepoDetailsView} from '../RepoDetailsView/RepoDetailsView.sfc';
 import {IOrganisationViewData} from './interfaces/IOrganisationViewData';
 import {IOrganisationViewActions} from './interfaces/IOrganisationViewActions';
 import {Route, RouteComponentProps, Switch} from 'react-router';
@@ -19,7 +19,7 @@ interface IOrganisationViewProps extends RouteComponentProps<any> {
 export const OrganisationView: SFC<IOrganisationViewProps> = (props) => {
 
     const {organisationId} = props.match.params;
-    const {pushRouteToOrganisationPage} = props.actions;
+    const {repoInfo} = props.data;
 
     return (
         <>
@@ -36,8 +36,9 @@ export const OrganisationView: SFC<IOrganisationViewProps> = (props) => {
 
                 <SidebarView
                     data={{
+                        repoInfo,
                         repos: props.data.repos,
-                        organisationId: props.data.organisationId
+                        organisationId: organisationId
                     }}
                     actions={
                         {
@@ -48,11 +49,23 @@ export const OrganisationView: SFC<IOrganisationViewProps> = (props) => {
                 <Switch>
 
                     <Route exact path={'/org/:organisationId'}
-                           component={OrganisationDetailsView}
+                           render={() => {
+                               return <OrganisationDetailsView
+                                   data={{organisationInfo: props.data.organisationInfo}}
+                               />;
+                           }}
                     />
 
                     <Route exact path={'/org/:organisationId/:repoId'}
-                           component={RepoDetailsView}
+                           render={() => {
+                               return <RepoDetailsView
+                                   data={{
+                                       repoInfo: props.data.repoInfo,
+                                       repoContributors: props.data.repoContributors
+                                   }}
+                               />;
+                           }}
+
                     />
 
                     <Route>Empty container</Route>

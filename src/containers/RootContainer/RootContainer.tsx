@@ -6,6 +6,7 @@ import {IRootActions} from '../../actions/IRootActions';
 import {OrganisationContainer} from '../OrganisationContainer/OrganisationContainer';
 import {ICombinedState} from 'src/interfaces/ICombinedState';
 import {LocationDescriptorObject} from 'history';
+import {Config} from '../../config';
 
 export interface IOrganisationReposAppProps extends RouteComponentProps<any> {
     data: ICombinedState;
@@ -41,8 +42,11 @@ export class RootContainer extends Component<IOrganisationReposAppProps> {
 
     private getRedirectLocation (): LocationDescriptorObject {
         const loc: LocationDescriptorObject = {
-            pathname: `/org/facebook`,
-            state: {view: 'OrganisationRoute'}
+            pathname: `/org/${Config.DefaultOrganisationId}`,
+            state: {
+                view: 'OrganisationRoute',
+                organisationId: Config.DefaultOrganisationId
+            }
         };
 
         return loc;
