@@ -1,0 +1,8 @@
+{
+  "reject": [
+    "webpack",
+    "@types/webpack",
+    "@types/react",
+    "ts-loader"
+  ]
+}
