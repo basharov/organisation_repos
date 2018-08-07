@@ -17,7 +17,11 @@ function* fetchData (action: any) {
     switch (routeName) {
 
         case 'OrganisationRoute':
-            yield put({type: RootActions.ReposRequested});
+            yield put({
+                type: RootActions.OrganisationInfoRequested,
+                payload: {organisationId: action.payload.state.organisationId}
+            });
+            yield put({type: RootActions.ReposRequested, payload: {organisationId: action.payload.state.organisationId}});
             break;
 
         case 'RepoRoute':

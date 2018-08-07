@@ -4,37 +4,35 @@ import {Redirect, Route} from 'react-router-dom';
 import {RouteComponentProps, Switch} from 'react-router';
 import {IRootActions} from '../../actions/IRootActions';
 import {OrganisationContainer} from '../OrganisationContainer/OrganisationContainer';
-import {HeaderContainer} from '../HeaderContainer/HeaderContainer';
 import {ICombinedState} from 'src/interfaces/ICombinedState';
 import {LocationDescriptorObject} from 'history';
 
-
-export interface IFacebookProjectsAppProps extends RouteComponentProps<any> {
+export interface IOrganisationReposAppProps extends RouteComponentProps<any> {
     data: ICombinedState;
     actions: IRootActions;
 }
 
-export class RootContainer extends Component<IFacebookProjectsAppProps> {
+export class RootContainer extends Component<IOrganisationReposAppProps> {
     public render () {
-        console.log(this.props.location.state)
+
         return (
             <>
 
-                <HeaderContainer/>
 
                 <Switch>
+
+                    <Route path='/org/:organisationId'
+                           component={OrganisationContainer}
+                    />
 
                     <Route exact path={'/'}>
                         <Redirect to={this.getRedirectLocation()}/>
                     </Route>
 
-                    <Route path='/org/:organisationid'
-                           component={OrganisationContainer}
-                    />
-
                     <Route render={() =>
                         <div>Empty Container</div>}
                     />
+
                 </Switch>
 
             </>

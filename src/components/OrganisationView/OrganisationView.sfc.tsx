@@ -5,44 +5,62 @@ import {OrganisationViewArea} from './OrganisationView.style';
 import {RepoDetailsView} from '../RepoDetailsView/RepoDetailsView';
 import {IOrganisationViewData} from './interfaces/IOrganisationViewData';
 import {IOrganisationViewActions} from './interfaces/IOrganisationViewActions';
-import {Route, Switch} from 'react-router';
+import {Route, RouteComponentProps, Switch} from 'react-router';
 import {OrganisationDetailsView} from '../OrganisationDetailsView/OrganisationDetailsView';
+import {HeaderView} from '../HeaderView/HeaderView.sfc';
 
-interface IOrganisationViewProps {
+import {history} from 'src/store/store';
+
+interface IOrganisationViewProps extends RouteComponentProps<any> {
     data: IOrganisationViewData;
     actions: IOrganisationViewActions;
 }
 
 export const OrganisationView: SFC<IOrganisationViewProps> = (props) => {
 
+    const {organisationId} = props.match.params;
+    const {pushRouteToOrganisationPage} = props.actions;
+
     return (
-        <OrganisationViewArea>
-            <SidebarView
-                data={{
-                    repos: props.data.repos,
-                    organisationId: props.data.organisationId
-                }}
-                actions={
-                    {
-                        requestRepoInfoAction: props.actions.requestRepoInfoAction
+        <>
+            <HeaderView
+                data={{organisationId}}
+                actions={{
+                    pushRouteToOrganisationPage: (orgId: string) => {
+                        history.push(`/org/${orgId}`);
                     }
-                }/>
+                }}
+            />
 
-            <Switch>
+            <OrganisationViewArea>
 
-                <Route exact path={'/org/:organisationId'}
-                       component={OrganisationDetailsView}
-                />
+                <SidebarView
+                    data={{
+                        repos: props.data.repos,
+                        organisationId: props.data.organisationId
+                    }}
+                    actions={
+                        {
+                            requestRepoInfoAction: props.actions.requestRepoInfoAction
+                        }
+                    }/>
 
-                <Route exact path={'/org/:organisationId/:repoId'}
-                       component={RepoDetailsView}
-                />
+                <Switch>
 
-                <Route>Empty container</Route>
+                    <Route exact path={'/org/:organisationId'}
+                           component={OrganisationDetailsView}
+                    />
 
-            </Switch>
+                    <Route exact path={'/org/:organisationId/:repoId'}
+                           component={RepoDetailsView}
+                    />
 
-        </OrganisationViewArea>
+                    <Route>Empty container</Route>
+
+                </Switch>
+
+            </OrganisationViewArea>
+        </>
     );
 
 };

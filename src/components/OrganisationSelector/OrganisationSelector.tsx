@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {Config} from '../../config';
+import {IOrganisationSelectorData} from './interfaces/IOrganisationSelectorData';
+
+import {history} from 'src/store/store';
 
 interface IOrganisationSelectorProps {
-    data: any;
-    actions: any;
+    data: IOrganisationSelectorData;
+    // actions: IOrganisationSelectorActions;
 }
 
 export interface IHeaderState {
@@ -18,7 +21,17 @@ export class OrganisationSelector extends Component<IOrganisationSelectorProps, 
         return (
             <>
                 <label htmlFor='organisaton-selector'>Organisation:</label>
-                <select name='organisaton-selector' id='organisaton-selector'>
+                <select
+                    name='organisaton-selector'
+                    id='organisaton-selector'
+                    value={this.props.data.organisationId}
+                    onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+                        history.push(`/org/${event.target.value}`, {
+                            view: `OrganisationRoute`,
+                            organisationId: event.target.value
+                        });
+                    }}
+                >
                     {getOrganisationsOptions()}
                 </select>
             </>
@@ -28,6 +41,6 @@ export class OrganisationSelector extends Component<IOrganisationSelectorProps, 
 
 const getOrganisationsOptions = () => {
     return Object.keys(Config.Organisations).map((organisationId: string) => {
-        return <option key={organisationId} value='organisationId'>{Config.Organisations[organisationId]}</option>;
+        return <option key={organisationId} value={organisationId}>{Config.Organisations[organisationId]}</option>;
     });
-}
+};

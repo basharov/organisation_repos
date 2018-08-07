@@ -2,13 +2,13 @@ import {Config} from '../config';
 
 const parseLinkHeader = require('parse-link-header');
 
-export const getFacebookInfo = async () => {
-    return fetch(`${Config.BasePath}/orgs/facebook`)
+export const getOrganisationInfo = async (organisationId: string) => {
+    return fetch(`${Config.BasePath}/orgs/${organisationId}`)
         .then((resp) => resp.json());
 };
 
-export const getFacebookRepos = async (pageNumber: number) => {
-    return fetch(`${Config.BasePath}/orgs/facebook/repos?page=${pageNumber}`)
+export const getOrganisationRepos = async (organisationId: string, pageNumber: number) => {
+    return fetch(`${Config.BasePath}/orgs/${organisationId}/repos?page=${pageNumber}`)
         .then((resp: Response) => {
             // const linkString = resp.headers.get('Link') || '';
             // const parsed = parseLinkHeader(linkString);

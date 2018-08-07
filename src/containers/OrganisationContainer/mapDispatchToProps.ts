@@ -11,7 +11,7 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { readonly actio
 
             setMetricsParameter: (payload: any) => {
                 dispatch<any>({type: '123', payload});
-            },
+            }
         }
     };
 };
