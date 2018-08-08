@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {HeaderViewArea, LeftSide, LightLink, RightSide} from './HeaderView.style';
-import {OrganisationSelector} from '../OrganisationSelector/OrganisationSelector';
+import {OrganisationSelectorView} from '../OrganisationSelectorView/OrganisationSelectorView';
 import {IHeaderViewData} from './interfaces/IHeaderViewData';
 import {IHeaderViewActions} from './interfaces/IHeaderViewActions';
 
@@ -27,7 +27,7 @@ export const HeaderView = (props: IHeaderViewProps) => {
 
             <RightSide>
 
-                <OrganisationSelector
+                <OrganisationSelectorView
                     data={{organisationId}}
                 />
 

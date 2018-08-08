@@ -1,14 +1,13 @@
-import {ICombinedState} from '../../interfaces/ICombinedState';
-import {ICommonState} from '../../interfaces/ICommonState';
 import {IOrganisationViewData} from '../../components/OrganisationView/interfaces/IOrganisationViewData';
+import {ICommonState} from '../../interfaces/ICommonState';
 
-export const mapStateToProps = (state: ICombinedState): { data: IOrganisationViewData } => {
+export const mapStateToProps = (state: ICommonState): { data: IOrganisationViewData } => {
     return {
         data: {
-            organisationInfo: state.common.organisationInfo,
-            repos: state.common.repos,
-            repoInfo: state.common.repoInfo,
-            repoContributors: state.common.repoContributors
+            organisationInfo: state.organisationInfo,
+            repos: state.repos,
+            repoInfo: state.repoInfo,
+            repoContributors: state.repoContributors
         }
     };
 };

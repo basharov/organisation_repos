@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import {mapStateToProps} from './mapStateToProps';
 import {mapDispatchToProps} from './mapDispatchToProps';
 import {connect} from 'react-redux';

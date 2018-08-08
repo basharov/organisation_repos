@@ -2,7 +2,7 @@ import {ICommonState} from '../interfaces/ICommonState';
 
 export const initialCommonState: ICommonState = {
     organisationInfo: {
-        name: '',
+        name: '!!!',
         avatar_url: '',
         description: '',
         location: '',

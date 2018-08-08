@@ -24,25 +24,24 @@ export class SidebarView extends Component<ISidebarViewProps> {
     }
 
     public render () {
-        return <SidebarViewWrapper ref={this.scrollableRef}>
-            {getReposTitles(this.props)}
-        </SidebarViewWrapper>;
+        return (
+            <SidebarViewWrapper ref={this.scrollableRef}>
+                {getReposTitles(this.props)}
+            </SidebarViewWrapper>
+        );
     }
 }
 
 const getReposTitles = (props: ISidebarViewProps) => {
 
-    return props.data.repos.map((repo: IRepoInfo, index: number) => {
-            const loc = {
-                pathname: `/org/${props.data.organisationId}/${repo.name}`,
-                state: {view: 'RepoRoute', organisationId: props.data.organisationId, repoId: repo.name}
-            };
+    console.log(props.match)
 
+    return props.data.repos.map((repo: IRepoInfo, index: number) => {
             return props.data.repoInfo.name === repo.name
                 ?
                 <ActiveLabel key={index}>{repo.name}</ActiveLabel>
                 :
-                <ListLink key={index} to={loc}>{repo.name}</ListLink>;
+                <ListLink key={index} to={`/org/${props.match.params.organisationId}/${repo.name}`}>{repo.name}</ListLink>;
         }
     );
 };

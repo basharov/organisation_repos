@@ -4,7 +4,7 @@ const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 
-const sourcePath = path.join(__dirname, './src');
+const sourcePath = path.join(__dirname, 'src');
 const outPath = path.join(__dirname, './build');
 
 // plugins

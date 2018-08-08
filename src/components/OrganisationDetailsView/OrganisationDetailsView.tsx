@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Component} from 'react';
 import {OrganisationDetailsViewArea, OrganisationLogo} from './OrganisationDetailsView.style';
 import {IOrganisationDetailsViewData} from './interfaces/IOrganisationDetailsViewData';
 
@@ -8,25 +7,20 @@ export interface IOrganisationDetailsViewProps {
     // actions: IOrganisationDetailsViewActions;
 }
 
-export class OrganisationDetailsView extends Component<IOrganisationDetailsViewProps> {
-    public props: IOrganisationDetailsViewProps;
+export const OrganisationDetailsView = (props: IOrganisationDetailsViewProps) => {
+    const {organisationInfo} = props.data;
 
-    public render () {
+    return (
+        <OrganisationDetailsViewArea>
+            <OrganisationLogo
+                src={organisationInfo.avatar_url}
+                alt={organisationInfo.name}
+            />
 
-        const {organisationInfo} = this.props.data;
-
-        return (
-            <OrganisationDetailsViewArea>
-                <OrganisationLogo
-                    src={organisationInfo.avatar_url}
-                    alt={organisationInfo.name}
-                />
-
-                <p>{organisationInfo.name}</p>
-                <p>{organisationInfo.description}</p>
+            <p>{organisationInfo.name}</p>
+            <p>{organisationInfo.description}</p>
 
 
-            </OrganisationDetailsViewArea>
-        );
-    }
-}
+        </OrganisationDetailsViewArea>
+    );
+};

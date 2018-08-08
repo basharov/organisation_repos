@@ -6,6 +6,7 @@ export const HeaderViewArea = styled.header`
   flex-direction: row;
   justify-content: center;
   background: #422;
+  flex-shrink:0;
 `;
 
 export const LeftSide = styled.div`

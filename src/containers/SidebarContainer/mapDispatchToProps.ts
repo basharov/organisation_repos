@@ -8,6 +8,9 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: ISide
             requestRepoInfoAction: (payload: any) => {
                 console.log(payload);
                 dispatch<any>({type: RootActions.RepoInfoRequested, payload});
+            },
+            requestReposAction: (organisationId: string) => {
+                dispatch<any>({type: RootActions.ReposRequested, payload: {organisationId}});
             }
         }
     };

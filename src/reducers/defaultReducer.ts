@@ -1,4 +1,4 @@
-import {IServerAction} from 'src/interfaces/IServerAction';
 import {ICommonState} from '../interfaces/ICommonState';
+import {AnyAction} from 'redux';
 
-export const defaultReducer = (state: ICommonState, action: IServerAction<any>): any => state;
+export const defaultReducer = (state: ICommonState, action: AnyAction): ICommonState => state;

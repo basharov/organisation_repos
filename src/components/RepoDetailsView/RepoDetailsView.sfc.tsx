@@ -9,6 +9,7 @@ export interface IRepoDetailsViewProps {
 }
 
 export const RepoDetailsView = (props: IRepoDetailsViewProps) => {
+
     return (
         <RepoDetailsViewArea>
 

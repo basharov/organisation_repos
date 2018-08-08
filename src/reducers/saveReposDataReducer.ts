@@ -1,6 +1,7 @@
-import {IServerAction} from 'src/interfaces/IServerAction';
+import {ICommonState} from '../interfaces/ICommonState';
+import {AnyAction} from 'redux';
 
-export const saveReposDataReducer = (state: any, action: IServerAction<any>): any => {
+export const saveReposDataReducer = (state: ICommonState, action: AnyAction): ICommonState => {
     return {
         ...state,
         repos: action.payload

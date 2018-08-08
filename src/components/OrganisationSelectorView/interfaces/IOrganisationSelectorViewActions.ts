@@ -1,3 +1,3 @@
-export interface IOrganisationSelectorActions {
+export interface IOrganisationSelectorViewActions {
     pushRouteToOrganisationPage (organisationId: string): void;
 }

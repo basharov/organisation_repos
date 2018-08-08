@@ -1,31 +1,28 @@
 import * as React from 'react';
-import {Redirect, Route} from 'react-router-dom';
-import {Switch} from 'react-router';
 import {OrganisationContainer} from '../OrganisationContainer/OrganisationContainer';
-import {Config} from '../../config';
 import {SidebarContainer} from '../SidebarContainer/SidebarContainer';
+import {Redirect, Route, Switch} from 'react-router';
+import {Config} from '../../config';
 import {EmptyView} from '../../components/EmptyView/EmptyView.sfc';
 
 export const RootContainer = () =>
     (
         <>
-
-            <SidebarContainer/>
-
             <Switch>
 
-                <Route path='/org/:organisationId'
+                <Route path={Config.Routes.Organisation}
                        component={OrganisationContainer}
                 />
 
-                <Route exact path={'/'}>
-                    <Redirect to={`/org/${Config.DefaultOrganisationId}`}/>
+                <Route exact path={Config.Routes.Home}>
+                    <Redirect to={Config.Routes.DefaultOrganisation}/>
                 </Route>
 
                 <Route component={EmptyView}
                 />
 
             </Switch>
+
 
         </>
 

@@ -1,21 +1,21 @@
 import * as React from 'react';
 import {Component} from 'react';
 import {Config} from '../../config';
-import {IOrganisationSelectorData} from './interfaces/IOrganisationSelectorData';
+import {IOrganisationSelectorViewData} from './interfaces/IOrganisationSelectorViewData';
 
 import {history} from 'src/store/store';
-import {LightLabel} from './OrganisationSelector.style';
+import {LightLabel} from './OrganisationSelectorView.style';
 
-interface IOrganisationSelectorProps {
-    data: IOrganisationSelectorData;
+interface IOrganisationSelectorViewProps {
+    data: IOrganisationSelectorViewData;
     // actions: IOrganisationSelectorActions;
 }
 
 export interface IHeaderState {
 }
 
-export class OrganisationSelector extends Component<IOrganisationSelectorProps, IHeaderState> {
-    public props: IOrganisationSelectorProps;
+export class OrganisationSelectorView extends Component<IOrganisationSelectorViewProps, IHeaderState> {
+    public props: IOrganisationSelectorViewProps;
 
     public render () {
 
