@@ -6,7 +6,9 @@ import {IUserAction} from '../interfaces/IUserAction';
 
 export function* githubConnectionSaga () {
     yield takeEvery(RootActions.OrganisationInfoRequested, (action: IUserAction<RootActions.OrganisationInfoRequested, { organisationId: string }>) => fetchOrganisationInfo(action));
+
     yield takeEvery(RootActions.ReposRequested, (action: AnyAction) => fetchReposList(action));
+
     yield takeEvery(RootActions.RepoInfoRequested, (action) => fetchRepoInfo(action));
     yield takeEvery(RootActions.RepoContributorsRequested, (action) => fetchRepoContributors(action));
 }
@@ -22,9 +24,11 @@ function* fetchOrganisationInfo (action: IUserAction<RootActions.OrganisationInf
 }
 
 function* fetchReposList (action: AnyAction) {
+
     try {
-        const repos = yield call(getOrganisationRepos, action.payload.organisationId, 1);
-        yield put({type: RootActions.ReposFulfilled, payload: repos});
+        const payload = yield call(getOrganisationRepos, action.payload.organisationId);
+
+        yield put({type: RootActions.ReposFulfilled, payload});
 
     } catch (error) {
         console.error(error);

@@ -10,6 +10,7 @@ export const saveOrganisationInfoReducer = (state: ICommonState, action: AnyActi
             name: '',
             description: '',
             subscribers_count: -1,
+            watchers_count: -1,
         }
     };
 };

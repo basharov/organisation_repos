@@ -6,6 +6,9 @@ export enum RootActions {
     ReposRequested = 'RootActions.ReposRequested',
     ReposFulfilled = 'RootActions.ReposFulfilled',
 
+    MoreReposRequested = 'RootActions.MoreReposRequested',
+    MoreReposFulfilled = 'RootActions.MoreReposFulfilled',
+
     OrganisationInfoRequested = 'RootActions.OrganisationInfoRequested',
     OrganisationInfoFulfilled = 'RootActions.OrganisationInfoFulfilled',
 

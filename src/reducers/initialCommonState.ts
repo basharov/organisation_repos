@@ -12,13 +12,16 @@ export const initialCommonState: ICommonState = {
         html_url: '',
     },
     repos: [],
+    reposTotalPagesCount: 1,
+    reposLastPageFetched: 1,
     repoInfo: {
         name: '',
         description: '',
         subscribers_count: -1,
+        watchers_count: -1,
     },
     repoContributors: [],
 
-    isReposLoading: true,
+    isReposLoading: false,
     isOrganisationDetailsLoading: true
 };

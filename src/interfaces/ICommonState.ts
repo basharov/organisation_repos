@@ -4,6 +4,8 @@ import {IContributor} from './IContributor';
 
 export interface ICommonState {
     repos: IRepoInfo[];
+    reposTotalPagesCount: number;
+    reposLastPageFetched: number;
     organisationInfo: IOrganisationInfo;
     isOrganisationDetailsLoading: boolean;
     repoInfo: IRepoInfo;
