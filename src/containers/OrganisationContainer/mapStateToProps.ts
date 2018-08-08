@@ -5,6 +5,7 @@ export const mapStateToProps = (state: ICommonState): { data: IOrganisationViewD
     return {
         data: {
             organisationInfo: state.organisationInfo,
+            isOrganisationDetailsLoading: state.isOrganisationDetailsLoading,
             repos: state.repos,
             repoInfo: state.repoInfo,
             repoContributors: state.repoContributors

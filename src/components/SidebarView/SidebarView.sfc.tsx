@@ -5,6 +5,8 @@ import {ISidebarViewData} from './interfaces/ISidebarViewData';
 import {ISidebarViewActions} from './interfaces/ISidebarViewActions';
 import {IRepoInfo} from '../../interfaces/IRepoInfo';
 import {RouteComponentProps} from 'react-router';
+import {findDOMNode} from 'react-dom';
+import {Spinner} from '../Spinner/Spinner.sfc';
 
 interface ISidebarViewProps extends RouteComponentProps<any> {
     data: ISidebarViewData;
@@ -20,12 +22,18 @@ export class SidebarView extends Component<ISidebarViewProps> {
     }
 
     public componentDidUpdate () {
-        console.log(this.scrollableRef);
+        const scrollableAreaNode = findDOMNode(this.scrollableRef.current)! as Element;
+        if (scrollableAreaNode.scrollHeight <= scrollableAreaNode.clientHeight) {
+            console.log('will fetch more items');
+        } else {
+            console.log('will not fetch more items');
+        }
     }
 
     public render () {
         return (
             <SidebarViewWrapper ref={this.scrollableRef}>
+                {this.props.data.isReposLoading ? <Spinner/> : null}
                 {getReposTitles(this.props)}
             </SidebarViewWrapper>
         );
@@ -33,8 +41,6 @@ export class SidebarView extends Component<ISidebarViewProps> {
 }
 
 const getReposTitles = (props: ISidebarViewProps) => {
-
-    console.log(props.match)
 
     return props.data.repos.map((repo: IRepoInfo, index: number) => {
             return props.data.repoInfo.name === repo.name

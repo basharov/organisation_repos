@@ -17,5 +17,8 @@ export const initialCommonState: ICommonState = {
         description: '',
         subscribers_count: -1,
     },
-    repoContributors: []
+    repoContributors: [],
+
+    isReposLoading: true,
+    isOrganisationDetailsLoading: true
 };

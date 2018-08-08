@@ -7,6 +7,7 @@ export const SidebarViewWrapper = styled.div`
   flex-basis: 300px;
   background: rgba(0,0,0,0.1);
   overflow-y: scroll;
+  position:relative;
 `;
 
 export const ListLink = styled(Link)`

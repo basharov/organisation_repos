@@ -5,6 +5,7 @@ export const saveOrganisationInfoReducer = (state: ICommonState, action: AnyActi
     return {
         ...state,
         organisationInfo: action.payload,
+        isOrganisationDetailsLoading: false,
         repoInfo: {
             name: '',
             description: '',

@@ -39,7 +39,10 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
                     <Route exact path={Config.Routes.Organisation}
                            render={() => (
                                <OrganisationDetailsView
-                                   data={{organisationInfo: props.data.organisationInfo}}
+                                   data={{
+                                       organisationInfo: props.data.organisationInfo,
+                                       isOrganisationDetailsLoading: props.data.isOrganisationDetailsLoading
+                                   }}
                                />)}
                     />
 

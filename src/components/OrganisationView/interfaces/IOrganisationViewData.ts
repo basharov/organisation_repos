@@ -4,6 +4,7 @@ import {IContributor} from '../../../interfaces/IContributor';
 
 export interface IOrganisationViewData {
     organisationInfo: IOrganisationInfo;
+    isOrganisationDetailsLoading: boolean;
     repoInfo: IRepoInfo;
     repoContributors: IContributor[];
     repos: IRepoInfo[];

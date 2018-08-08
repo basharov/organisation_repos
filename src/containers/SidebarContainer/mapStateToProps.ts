@@ -7,6 +7,7 @@ export const mapStateToProps = (state: ICommonState): { data: ISidebarViewData }
             // organisationInfo: state.common.organisationInfo,
             repos: state.repos,
             repoInfo: state.repoInfo,
+            isReposLoading: state.isReposLoading,
             // repoContributors: state.common.repoContributors
         }
     };
