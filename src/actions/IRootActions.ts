@@ -1,10 +1,5 @@
-import {UserActionFunction} from 'src/interfaces/UserActionFunction';
-
 export interface IRootActions {
-    readonly commonActions: {
-        // readonly setCrop: UserActionFunction<SetCropActionPayload>;
-        readonly setCrop: UserActionFunction<any>;
-    };
+    requestRepoInfoAction (repoName: string): void;
 }
 
 export enum RootActions {

@@ -42,9 +42,11 @@ module.exports = {
             {
                 test: /\.(ts|tsx)$/,
                 use: [
-                    {
-                        loader: 'babel-loader'
-                    },
+                    /*
+                                        {
+                                            loader: 'babel-loader'
+                                        },
+                    */
                     {
                         loader: 'ts-loader',
                         options: {
@@ -80,10 +82,9 @@ module.exports = {
     }
 };
 
-/*
 module.exports.serve = {
     content: [__dirname],
     add: (app, middleware, options) => {
         app.use(convert(history({})));
     },
-};*/
+};

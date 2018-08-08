@@ -1,7 +1,8 @@
 import {ICombinedState} from '../../interfaces/ICombinedState';
 import {ICommonState} from '../../interfaces/ICommonState';
+import {IOrganisationViewData} from '../../components/OrganisationView/interfaces/IOrganisationViewData';
 
-export const mapStateToProps = (state: ICombinedState): { data: ICommonState } => {
+export const mapStateToProps = (state: ICombinedState): { data: IOrganisationViewData } => {
     return {
         data: {
             organisationInfo: state.common.organisationInfo,

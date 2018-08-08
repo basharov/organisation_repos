@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {SFC} from 'react';
 import {HeaderViewArea, LeftSide, LightLink, RightSide} from './HeaderView.style';
 import {OrganisationSelector} from '../OrganisationSelector/OrganisationSelector';
 import {IHeaderViewData} from './interfaces/IHeaderViewData';
@@ -10,7 +9,7 @@ interface IHeaderViewProps {
     actions: IHeaderViewActions;
 }
 
-export const HeaderView: SFC<IHeaderViewProps> = (props) => {
+export const HeaderView = (props: IHeaderViewProps) => {
 
     const {organisationId} = props.data;
 

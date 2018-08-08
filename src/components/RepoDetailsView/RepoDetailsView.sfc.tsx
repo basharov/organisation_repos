@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {SFC} from 'react';
 import {RepoDetailsViewArea} from './RepoDetailsView.style';
 import {IRepoDetailsViewData} from './interfaces/IRepoDetailsViewData';
 import {IContributor} from '../../interfaces/IContributor';
@@ -9,7 +8,7 @@ export interface IRepoDetailsViewProps {
     // actions: IRepoDetailsViewActions;
 }
 
-export const RepoDetailsView: SFC<IRepoDetailsViewProps> = (props) => {
+export const RepoDetailsView = (props: IRepoDetailsViewProps) => {
     return (
         <RepoDetailsViewArea>
 

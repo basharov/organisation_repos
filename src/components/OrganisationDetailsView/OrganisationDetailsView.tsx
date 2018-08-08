@@ -9,7 +9,7 @@ export interface IOrganisationDetailsViewProps {
 }
 
 export class OrganisationDetailsView extends Component<IOrganisationDetailsViewProps> {
-    public readonly props: IOrganisationDetailsViewProps;
+    public props: IOrganisationDetailsViewProps;
 
     public render () {
 

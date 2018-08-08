@@ -1,20 +1,34 @@
 import * as React from 'react';
-import {SFC} from 'react';
+import {Component} from 'react';
 import {ActiveLabel, ListLink, SidebarViewWrapper} from './SidebarView.style';
 import {ISidebarViewData} from './interfaces/ISidebarViewData';
 import {ISidebarViewActions} from './interfaces/ISidebarViewActions';
 import {IRepoInfo} from '../../interfaces/IRepoInfo';
+import {RouteComponentProps} from 'react-router';
 
-interface ISidebarViewProps {
+interface ISidebarViewProps extends RouteComponentProps<any> {
     data: ISidebarViewData;
     actions: ISidebarViewActions;
 }
 
-export const SidebarView: SFC<ISidebarViewProps> = (props) =>
+export class SidebarView extends Component<ISidebarViewProps> {
+    public scrollableRef: React.RefObject<any>;
 
-    <SidebarViewWrapper>
-        {getReposTitles(props)}
-    </SidebarViewWrapper>;
+    constructor (props: ISidebarViewProps) {
+        super(props);
+        this.scrollableRef = React.createRef();
+    }
+
+    public componentDidUpdate () {
+        console.log(this.scrollableRef);
+    }
+
+    public render () {
+        return <SidebarViewWrapper ref={this.scrollableRef}>
+            {getReposTitles(this.props)}
+        </SidebarViewWrapper>;
+    }
+}
 
 const getReposTitles = (props: ISidebarViewProps) => {
 

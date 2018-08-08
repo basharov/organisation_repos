@@ -1,6 +1,6 @@
 import {Config} from '../config';
 
-const parseLinkHeader = require('parse-link-header');
+// const parseLinkHeader = require('parse-link-header');
 
 export const getOrganisationInfo = async (organisationId: string) => {
     return fetch(`${Config.BasePath}/orgs/${organisationId}`)

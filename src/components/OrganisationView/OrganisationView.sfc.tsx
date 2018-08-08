@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {SFC} from 'react';
 import {SidebarView} from '../SidebarView/SidebarView.sfc';
 import {OrganisationViewArea} from './OrganisationView.style';
 import {RepoDetailsView} from '../RepoDetailsView/RepoDetailsView.sfc';
@@ -16,7 +15,7 @@ interface IOrganisationViewProps extends RouteComponentProps<any> {
     actions: IOrganisationViewActions;
 }
 
-export const OrganisationView: SFC<IOrganisationViewProps> = (props) => {
+export const OrganisationView = (props: IOrganisationViewProps) => {
 
     const {organisationId} = props.match.params;
     const {repoInfo} = props.data;
@@ -33,18 +32,6 @@ export const OrganisationView: SFC<IOrganisationViewProps> = (props) => {
             />
 
             <OrganisationViewArea>
-
-                <SidebarView
-                    data={{
-                        repoInfo,
-                        repos: props.data.repos,
-                        organisationId: organisationId
-                    }}
-                    actions={
-                        {
-                            requestRepoInfoAction: props.actions.requestRepoInfoAction
-                        }
-                    }/>
 
                 <Switch>
 
