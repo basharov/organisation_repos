@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Component} from 'react';
+import {SFC} from 'react';
 import {ActiveLabel, ListLink, SidebarViewWrapper} from './SidebarView.style';
 import {ISidebarViewData} from './interfaces/ISidebarViewData';
 import {ISidebarViewActions} from './interfaces/ISidebarViewActions';
@@ -12,17 +12,12 @@ interface ISidebarViewProps extends RouteComponentProps<any> {
     actions: ISidebarViewActions;
 }
 
-export class SidebarView extends Component<ISidebarViewProps> {
-    public render () {
-        console.log(this.props)
-        return (
-            <SidebarViewWrapper>
-                {this.props.data.isReposLoading ? <Spinner/> : null}
-                {getReposTitles(this.props)}
-            </SidebarViewWrapper>
-        );
-    }
-}
+export const SidebarView: SFC<ISidebarViewProps> = (props) => (
+    <SidebarViewWrapper>
+        {props.data.isReposLoading ? <Spinner/> : null}
+        {getReposTitles(props)}
+    </SidebarViewWrapper>
+);
 
 const getReposTitles = (props: ISidebarViewProps) => {
 

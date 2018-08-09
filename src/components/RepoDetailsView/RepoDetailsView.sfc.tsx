@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {RepoDetailsViewArea} from './RepoDetailsView.style';
+import {ContributorsListArea, RepoDetailsViewArea, RepoInformationArea} from './RepoDetailsView.style';
 import {IRepoDetailsViewData} from './interfaces/IRepoDetailsViewData';
 import {IContributor} from '../../interfaces/IContributor';
 
@@ -13,12 +13,14 @@ export const RepoDetailsView = (props: IRepoDetailsViewProps) => {
     return (
         <RepoDetailsViewArea>
 
-            <p>{props.data.repoInfo.name}</p>
-            <p>{props.data.repoInfo.description}</p>
+            <RepoInformationArea>
+                <p>{props.data.repoInfo.name}</p>
+                <p>{props.data.repoInfo.description}</p>
+            </RepoInformationArea>
 
-            <ul>
+            <ContributorsListArea>
                 {getContributorsList(props.data.repoContributors)}
-            </ul>
+            </ContributorsListArea>
 
         </RepoDetailsViewArea>
     );

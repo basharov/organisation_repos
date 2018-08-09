@@ -1,21 +1,22 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {RootActions} from '../actions/IRootActions';
-import {getOrganisationInfo, getOrganisationRepos, getRepoContributors, getRepoInfo} from '../api/GitHubConnector';
 import {AnyAction} from 'redux';
 import {IUserAction} from '../interfaces/IUserAction';
+import {fetchOrganisationInfo} from '../api/github/fetchOrganisationInfo';
+import {fetchOrganisationRepos} from '../api/github/fetchOrganisationRepos';
+import {fetchRepoInfo} from '../api/github/fetchRepoInfo';
+import {fetchRepoContributors} from '../api/github/fetchRepoContributors';
 
 export function* githubConnectionSaga () {
-    yield takeEvery(RootActions.OrganisationInfoRequested, (action: IUserAction<RootActions.OrganisationInfoRequested, { organisationId: string }>) => fetchOrganisationInfo(action));
-
-    yield takeEvery(RootActions.ReposRequested, (action: AnyAction) => fetchReposList(action));
-
-    yield takeEvery(RootActions.RepoInfoRequested, (action) => fetchRepoInfo(action));
-    yield takeEvery(RootActions.RepoContributorsRequested, (action) => fetchRepoContributors(action));
+    yield takeEvery(RootActions.OrganisationInfoRequested, fetchOrganisationInfoSaga);
+    yield takeEvery(RootActions.ReposRequested, fetchReposListSaga);
+    yield takeEvery(RootActions.RepoInfoRequested, fetchRepoInfoSaga);
+    yield takeEvery(RootActions.RepoContributorsRequested, fetchRepoContributorsSaga);
 }
 
-function* fetchOrganisationInfo (action: IUserAction<RootActions.OrganisationInfoRequested, { organisationId: string }>) {
+function* fetchOrganisationInfoSaga (action: IUserAction<RootActions.OrganisationInfoRequested, { organisationId: string }>) {
     try {
-        const info = yield call(getOrganisationInfo, action.payload.organisationId);
+        const info = yield call(fetchOrganisationInfo, action.payload.organisationId);
         yield put({type: RootActions.OrganisationInfoFulfilled, payload: info});
 
     } catch (error) {
@@ -23,10 +24,10 @@ function* fetchOrganisationInfo (action: IUserAction<RootActions.OrganisationInf
     }
 }
 
-function* fetchReposList (action: AnyAction) {
+function* fetchReposListSaga (action: AnyAction) {
 
     try {
-        const payload = yield call(getOrganisationRepos, action.payload.organisationId);
+        const payload = yield call(fetchOrganisationRepos, action.payload.organisationId);
 
         yield put({type: RootActions.ReposFulfilled, payload});
 
@@ -35,10 +36,10 @@ function* fetchReposList (action: AnyAction) {
     }
 }
 
-function* fetchRepoInfo (action: AnyAction) {
+function* fetchRepoInfoSaga (action: AnyAction) {
 
     try {
-        const repos = yield call(getRepoInfo, action.payload.organisationId, action.payload.repoId);
+        const repos = yield call(fetchRepoInfo, action.payload.organisationId, action.payload.repoId);
         yield put({type: RootActions.RepoInfoFulfilled, payload: repos});
 
     } catch (error) {
@@ -46,10 +47,10 @@ function* fetchRepoInfo (action: AnyAction) {
     }
 }
 
-function* fetchRepoContributors (action: AnyAction) {
+function* fetchRepoContributorsSaga (action: AnyAction) {
 
     try {
-        const repos = yield call(getRepoContributors, action.payload.organisationId, action.payload.repoId);
+        const repos = yield call(fetchRepoContributors, action.payload.organisationId, action.payload.repoId);
         yield put({type: RootActions.RepoContributorsFulfilled, payload: repos});
 
     } catch (error) {
