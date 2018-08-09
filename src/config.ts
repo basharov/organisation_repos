@@ -9,6 +9,7 @@ export interface IConfig {
     BasePath: string;
     Organisations: { [key: string]: string };
     DefaultOrganisationId: string;
+    ResultsPerPage: number;
 }
 
 const DefaultOrganisationId = 'facebook';
@@ -26,5 +27,6 @@ export const Config: IConfig = {
         facebook: 'Facebook',
         twitter: 'Twitter'
     },
-    DefaultOrganisationId
+    DefaultOrganisationId,
+    ResultsPerPage: 100
 };

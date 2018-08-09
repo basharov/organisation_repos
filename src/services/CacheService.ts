@@ -1,21 +1,12 @@
-import {IRepoInfo} from '../interfaces/IRepoInfo';
-import {IOrganisationInfo} from '../interfaces/IOrganisationInfo';
-
-const reposCache: { [key: string]: IRepoInfo[] } = {};
-const organisationInfoCache: { [key: string]: IOrganisationInfo } = {};
+const dataCache: { [key: string]: any } = {};
 
 
 export const CacheService = {
-    saveReposCache: (organisationId: string, repos: IRepoInfo[]) => {
-        reposCache[organisationId] = repos;
+    getData: <T> (cacheKey: string) => {
+        return dataCache[cacheKey];
     },
-    getReposCache: (organisationId: string) => {
-        return reposCache[organisationId];
-    },
-    saveOrganisationInfoCache: (organisationId: string, organisationInfo: IOrganisationInfo) => {
-        organisationInfoCache[organisationId] = organisationInfo;
-    },
-    getOrganisationInfoCache: (organisationId: string) => {
-        return organisationInfoCache[organisationId];
+    saveData: <T> (cacheKey: string, data: T) => {
+        dataCache[cacheKey] = data;
+        console.log(dataCache);
     }
 };

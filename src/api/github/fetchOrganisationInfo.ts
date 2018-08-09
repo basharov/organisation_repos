@@ -1,10 +1,13 @@
 import {Config} from '../../config';
 import {CacheService} from '../../services/CacheService';
 import {fetchData} from './utils/fetchData';
+import {IOrganisationInfo} from 'src/interfaces/IOrganisationInfo';
 
-export const fetchOrganisationInfo = async (organisationId: string) => {
+export const fetchOrganisationInfo = async (organisationId: string): Promise<IOrganisationInfo> => {
 
-    const cachedOrganisationInfo = CacheService.getOrganisationInfoCache(organisationId);
+    const cacheKey = `organisation_${organisationId}`;
+
+    const cachedOrganisationInfo = CacheService.getData<IOrganisationInfo>(cacheKey);
     if (cachedOrganisationInfo !== undefined) {
         return cachedOrganisationInfo;
     }
@@ -13,7 +16,7 @@ export const fetchOrganisationInfo = async (organisationId: string) => {
 
     const organisationInfo = await resp.data;
 
-    CacheService.saveOrganisationInfoCache(organisationId, organisationInfo);
+    CacheService.saveData<IOrganisationInfo>(cacheKey, organisationInfo);
 
     return organisationInfo;
 };
