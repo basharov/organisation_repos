@@ -32,5 +32,5 @@ export const Config: IConfig = {
     },
     DefaultOrganisationId,
     ResultsPerPage: 100,
-    AccessToken: 'e3301cce6c8b779877c28b593e828ab4b1f6a1e6'
+    AccessToken: process.env.GITHUB_ACCESS_TOKEN!
 };

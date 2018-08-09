@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
@@ -72,6 +73,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
+        new Dotenv({
+            path: '.env',
+            safe: false
+        }),
+
     ],
     node: {
         // workaround for webpack-dev-server issue
@@ -80,6 +86,7 @@ module.exports = {
         net: 'empty',
         child_process: 'empty'
     }
+
 };
 
 module.exports.serve = {
