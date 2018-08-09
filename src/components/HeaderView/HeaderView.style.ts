@@ -5,7 +5,7 @@ export const HeaderViewArea = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: #242;
+  background: #405;
   flex-shrink: 0;
 `;
 

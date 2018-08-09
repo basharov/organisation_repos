@@ -14,8 +14,11 @@ export const OrganisationDetailsView = (props: IOrganisationDetailsViewProps) =>
     return (
         <OrganisationDetailsViewArea>
             {
-                props.data.isOrganisationDetailsLoading ?
-                    <Spinner/> : getOrganisationDetails(props.data.organisationInfo)}
+                props.data.isOrganisationDetailsLoading
+                    ?
+                    <Spinner/>
+                    :
+                    getOrganisationDetails(props.data.organisationInfo)}
 
 
         </OrganisationDetailsViewArea>
@@ -29,8 +32,9 @@ const getOrganisationDetails = (organisationInfo: IOrganisationInfo) => {
                 alt={organisationInfo.name}
             />
 
-            <p>{organisationInfo.name}</p>
-            <p>{organisationInfo.description}</p>
+            <h1>{organisationInfo.name}</h1>
+            <h3>{organisationInfo.description}</h3>
+            <p>Click on a repo on the left to see its details and contributors list</p>
 
         </>
 

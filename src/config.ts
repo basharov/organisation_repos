@@ -26,7 +26,9 @@ export const Config: IConfig = {
     },
     Organisations: {
         facebook: 'Facebook',
-        twitter: 'Twitter'
+        twitter: 'Twitter',
+        airbnb: 'Airbnb',
+        uber: 'Uber'
     },
     DefaultOrganisationId,
     ResultsPerPage: 100,

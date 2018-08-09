@@ -22,8 +22,11 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
         repoInfo,
         repoContributors,
         organisationInfo,
+        rateLimits,
+
         isOrganisationDetailsLoading,
-        rateLimits
+        isRepoInfoLoading,
+        isRepoContributorsLoading,
     } = props.data;
 
     return (
@@ -56,7 +59,9 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
                                <RepoDetailsView
                                    data={{
                                        repoInfo,
-                                       repoContributors
+                                       repoContributors,
+                                       isRepoInfoLoading,
+                                       isRepoContributorsLoading
                                    }}
                                />
                            )}

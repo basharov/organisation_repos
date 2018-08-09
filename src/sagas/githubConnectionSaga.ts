@@ -68,8 +68,6 @@ function* fetchRepoContributorsSaga (action: AnyAction) {
 
     try {
 
-        console.log('contributors')
-        console.log('--------------------------------')
         const payload: IDataResponse<IContributor[]> = yield call(fetchRepoContributors, action.payload.organisationId, action.payload.repoId);
 
         yield put({type: RootActions.RateLimitsUpdated, payload: payload.limits});

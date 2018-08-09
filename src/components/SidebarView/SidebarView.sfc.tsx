@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {SFC} from 'react';
-import {ActiveLabel, ListLink, SidebarViewWrapper} from './SidebarView.style';
+import {ActiveLabel, ListLink, SidebarViewWrapper, WatchersCount} from './SidebarView.style';
 import {ISidebarViewData} from './interfaces/ISidebarViewData';
 import {ISidebarViewActions} from './interfaces/ISidebarViewActions';
 import {IRepoInfo} from 'src/interfaces/IRepoInfo';
@@ -24,11 +24,12 @@ const getReposTitles = (props: ISidebarViewProps) => {
     return props.data.repos.map((repo: IRepoInfo, index: number) => {
             return props.data.repoInfo.name === repo.name
                 ?
-                <ActiveLabel key={index}>{repo.name} ({repo.watchers_count})</ActiveLabel>
+                <ActiveLabel key={index}>{repo.name} <WatchersCount>{repo.watchers_count} watchers</WatchersCount></ActiveLabel>
                 :
                 <ListLink key={index}
                           to={`/org/${props.match.params.organisationId}/${repo.name}`}>
-                    {repo.name} ({repo.watchers_count})
+                    {repo.name}
+                    <WatchersCount>{repo.watchers_count} watchers</WatchersCount>
                 </ListLink>;
         }
     );

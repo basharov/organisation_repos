@@ -22,6 +22,7 @@ export class OrganisationSelectorView extends Component<IOrganisationSelectorVie
         return (
             <>
                 <LightLabel htmlFor='organisaton-selector'>Organisation:</LightLabel>
+                &nbsp;
                 <select
                     name='organisaton-selector'
                     id='organisaton-selector'

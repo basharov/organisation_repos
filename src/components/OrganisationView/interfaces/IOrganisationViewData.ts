@@ -5,9 +5,12 @@ import {IRateLimits} from 'src/interfaces/IRateLimits';
 
 export interface IOrganisationViewData {
     organisationInfo: IOrganisationInfo;
-    isOrganisationDetailsLoading: boolean;
     repoInfo: IRepoInfo;
     repoContributors: IContributor[];
     repos: IRepoInfo[];
     rateLimits: IRateLimits;
+
+    isOrganisationDetailsLoading: boolean;
+    isRepoInfoLoading: boolean;
+    isRepoContributorsLoading: boolean;
 }

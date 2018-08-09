@@ -8,10 +8,10 @@ import {saveRepoInfoReducer} from './saveRepoInfoReducer';
 import {saveRepoContributorsReducer} from './saveRepoContributorsReducer';
 import {saveReposReducer} from './saveReposReducer';
 import {saveRateLimitsReducer} from './saveRateLimitsReducer';
+import {fetchRepoInfoReducer} from './fetchRepoInfoReducer';
+import {fetchRepoContributorsReducer} from './fetchRepoContributorsReducer';
 
 export const rootReducer: Reducer<ICommonState> = (state: ICommonState, action: AnyAction): ICommonState => {
-
-    console.log(action)
 
     switch (action.type) {
 
@@ -20,6 +20,12 @@ export const rootReducer: Reducer<ICommonState> = (state: ICommonState, action: 
 
         case RootActions.ReposRequested:
             return fetchReposReducer(state, action);
+
+        case RootActions.RepoInfoRequested:
+            return fetchRepoInfoReducer(state, action);
+
+        case RootActions.RepoContributorsRequested:
+            return fetchRepoContributorsReducer(state, action);
 
         case RootActions.ReposFulfilled:
             return saveReposReducer(state, action);

@@ -44,10 +44,6 @@ export const fetchPagedData = async <T> (url: string, cacheKey: string): Promise
 
     CacheService.saveData(cacheKey, dataList);
 
-    console.log(results)
-    console.log(limits)
-
-
     return {
         data: dataList,
         limits: limits,

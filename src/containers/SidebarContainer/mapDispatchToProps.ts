@@ -21,8 +21,6 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: ISide
                     pageToFetch = state.reposTotalPagesCount;
                 }
 
-                console.log(pageToFetch)
-
                 dispatch<any>({type: RootActions.ReposRequested, payload: {organisationId, pageToFetch}});
             }
         }

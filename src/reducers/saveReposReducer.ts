@@ -4,7 +4,6 @@ import {AnyAction} from 'redux';
 
 export const saveReposReducer = (state: ICommonState, action: AnyAction): ICommonState => {
 
-    console.log(action.payload)
     const reposSorted = action.payload.data.sort((repo1: IRepoInfo, repo2: IRepoInfo) => {
         return repo2.watchers_count - repo1.watchers_count;
     });
