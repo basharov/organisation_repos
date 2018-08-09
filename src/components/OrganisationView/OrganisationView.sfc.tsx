@@ -6,10 +6,9 @@ import {IOrganisationViewActions} from './interfaces/IOrganisationViewActions';
 import {Route, RouteComponentProps, Switch} from 'react-router';
 import {OrganisationDetailsView} from '../OrganisationDetailsView/OrganisationDetailsView';
 import {HeaderView} from '../HeaderView/HeaderView.sfc';
-
 import {history} from 'src/store/store';
 import {Config} from 'src/config';
-import {SidebarContainer} from '../../containers/SidebarContainer/SidebarContainer';
+import {SidebarContainer} from 'src/containers/SidebarContainer/SidebarContainer';
 
 export interface IOrganisationViewProps extends RouteComponentProps<any> {
     data: IOrganisationViewData;
@@ -19,12 +18,18 @@ export interface IOrganisationViewProps extends RouteComponentProps<any> {
 export const OrganisationView = (props: IOrganisationViewProps) => {
 
     const {organisationId} = props.match.params;
-    const {repoInfo} = props.data;
+    const {
+        repoInfo,
+        repoContributors,
+        organisationInfo,
+        isOrganisationDetailsLoading,
+        rateLimits
+    } = props.data;
 
     return (
         <>
             <HeaderView
-                data={{organisationId}}
+                data={{organisationId, rateLimits}}
                 actions={{
                     pushRouteToOrganisationPage: (orgId: string) => {
                         history.push(`/org/${orgId}`);
@@ -40,8 +45,8 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
                            render={() => (
                                <OrganisationDetailsView
                                    data={{
-                                       organisationInfo: props.data.organisationInfo,
-                                       isOrganisationDetailsLoading: props.data.isOrganisationDetailsLoading
+                                       organisationInfo,
+                                       isOrganisationDetailsLoading
                                    }}
                                />)}
                     />
@@ -50,8 +55,8 @@ export const OrganisationView = (props: IOrganisationViewProps) => {
                            render={() => (
                                <RepoDetailsView
                                    data={{
-                                       repoInfo: props.data.repoInfo,
-                                       repoContributors: props.data.repoContributors
+                                       repoInfo,
+                                       repoContributors
                                    }}
                                />
                            )}

@@ -5,20 +5,30 @@ export const HeaderViewArea = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: #422;
-  flex-shrink:0;
+  background: #242;
+  flex-shrink: 0;
 `;
 
-export const LeftSide = styled.div`
+export const LogoArea = styled.div`
   padding: 20px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: 300px;
 `;
 
 export const LightLink = styled(Link)`
   color: #fff;
 `;
 
-export const RightSide = styled.div`
-  align-content: right;
+export const OrganisationSelectorArea = styled.div`
+  display: flex;
+  padding: 20px;
+  flex-grow: 0;
+`;
+
+export const RatesLimitsArea = styled.div`
+  align-content: center;
+  justify-content: center;
   display: flex;
   padding: 20px;
   flex-grow: 1;

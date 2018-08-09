@@ -1,6 +1,6 @@
-import {fetchData} from './utils/fetchData';
 import {Config} from '../../config';
+import {fetchPagedData} from './utils/fetchPagedData';
 
 export const fetchRepoContributors = async (organisationId: string, repoName: string) => {
-    return fetchData(`${Config.BasePath}/repos/${organisationId}/${repoName}/contributors?per_page=100`);
+    return fetchPagedData(`${Config.BasePath}/repos/${organisationId}/${repoName}/contributors`, `contributors_${organisationId}_${repoName}`);
 };

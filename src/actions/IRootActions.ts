@@ -3,11 +3,11 @@ export interface IRootActions {
 }
 
 export enum RootActions {
+    RateLimitsUpdated = 'RootActions.RateLimitsUpdated',
+    LimitError = 'RootActions.LimitError',
+
     ReposRequested = 'RootActions.ReposRequested',
     ReposFulfilled = 'RootActions.ReposFulfilled',
-
-    MoreReposRequested = 'RootActions.MoreReposRequested',
-    MoreReposFulfilled = 'RootActions.MoreReposFulfilled',
 
     OrganisationInfoRequested = 'RootActions.OrganisationInfoRequested',
     OrganisationInfoFulfilled = 'RootActions.OrganisationInfoFulfilled',

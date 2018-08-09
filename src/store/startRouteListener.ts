@@ -64,8 +64,8 @@ const dispatchRouteFetch = (store: Store, route: RoutesEnum, routeMatch: match<a
             break;
 
         case RoutesEnum.Repo:
-            store.dispatch({type: RootActions.ReposRequested, payload: routeMatch.params});
             store.dispatch({type: RootActions.RepoInfoRequested, payload: routeMatch.params});
+            store.dispatch({type: RootActions.ReposRequested, payload: routeMatch.params});
             store.dispatch({type: RootActions.RepoContributorsRequested, payload: routeMatch.params});
             break;
     }

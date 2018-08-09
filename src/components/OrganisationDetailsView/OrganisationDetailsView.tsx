@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {OrganisationDetailsViewArea, OrganisationLogo} from './OrganisationDetailsView.style';
-import {IOrganisationDetailsViewData} from './interfaces/IOrganisationDetailsViewData';
 import {Spinner} from '../Spinner/Spinner.sfc';
-import {IOrganisationInfo} from '../../interfaces/IOrganisationInfo';
+import {IOrganisationInfo} from 'src/interfaces/IOrganisationInfo';
+import {IOrganisationDetailsViewData} from './interfaces/IOrganisationDetailsViewData';
 
 export interface IOrganisationDetailsViewProps {
     data: IOrganisationDetailsViewData;
-    // actions: IOrganisationDetailsViewActions;
 }
 
 export const OrganisationDetailsView = (props: IOrganisationDetailsViewProps) => {

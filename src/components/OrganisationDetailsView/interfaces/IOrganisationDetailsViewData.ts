@@ -1,4 +1,4 @@
-import {IOrganisationInfo} from '../../../interfaces/IOrganisationInfo';
+import {IOrganisationInfo} from 'src/interfaces/IOrganisationInfo';
 
 export interface IOrganisationDetailsViewData {
     organisationInfo: IOrganisationInfo;

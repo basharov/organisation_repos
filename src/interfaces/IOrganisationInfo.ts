@@ -8,3 +8,5 @@ export interface IOrganisationInfo {
     public_repos: number;
     html_url: string;
 }
+
+export type OrganisationInfo = IOrganisationInfo;

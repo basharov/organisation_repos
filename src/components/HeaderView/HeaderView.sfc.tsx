@@ -1,37 +1,39 @@
 import * as React from 'react';
-import {HeaderViewArea, LeftSide, LightLink, RightSide} from './HeaderView.style';
+import {SFC} from 'react';
+import {HeaderViewArea, LightLink, LogoArea, OrganisationSelectorArea, RatesLimitsArea} from './HeaderView.style';
 import {OrganisationSelectorView} from '../OrganisationSelectorView/OrganisationSelectorView';
 import {IHeaderViewData} from './interfaces/IHeaderViewData';
 import {IHeaderViewActions} from './interfaces/IHeaderViewActions';
+import {RateLimitsView} from '../RateLimitsView/RateLimitsView.sfc';
 
 interface IHeaderViewProps {
     data: IHeaderViewData;
     actions: IHeaderViewActions;
 }
 
-export const HeaderView = (props: IHeaderViewProps) => {
+export const HeaderView: SFC<IHeaderViewProps> = (props) => {
 
-    const {organisationId} = props.data;
-
-    const loc = {
-        pathname: `/org/${props.data.organisationId}`,
-        state: {view: 'OrganisationRoute', organisationId: props.data.organisationId}
-    };
+    const {organisationId, rateLimits} = props.data;
 
     return (
         <HeaderViewArea>
 
-            <LeftSide>
-                <LightLink to={loc}>Repos on GitHub</LightLink>
-            </LeftSide>
+            <LogoArea>
+                <LightLink to={`/org/${props.data.organisationId}`}>Repos on GitHub</LightLink>
+            </LogoArea>
 
-            <RightSide>
+            <RatesLimitsArea>
+                <RateLimitsView
+                    data={{rateLimits}}
+                />
+            </RatesLimitsArea>
+
+            <OrganisationSelectorArea>
 
                 <OrganisationSelectorView
                     data={{organisationId}}
                 />
-
-            </RightSide>
+            </OrganisationSelectorArea>
 
         </HeaderViewArea>
     );

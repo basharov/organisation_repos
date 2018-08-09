@@ -3,7 +3,7 @@ import {SFC} from 'react';
 import {ActiveLabel, ListLink, SidebarViewWrapper} from './SidebarView.style';
 import {ISidebarViewData} from './interfaces/ISidebarViewData';
 import {ISidebarViewActions} from './interfaces/ISidebarViewActions';
-import {IRepoInfo} from '../../interfaces/IRepoInfo';
+import {IRepoInfo} from 'src/interfaces/IRepoInfo';
 import {RouteComponentProps} from 'react-router';
 import {Spinner} from '../Spinner/Spinner.sfc';
 

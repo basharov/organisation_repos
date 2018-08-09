@@ -1,8 +1,8 @@
-import {ICommonState} from '../interfaces/ICommonState';
+import {ICommonState} from 'src/interfaces/ICommonState';
 
 export const initialCommonState: ICommonState = {
     organisationInfo: {
-        name: '!!!',
+        name: '',
         avatar_url: '',
         description: '',
         location: '',
@@ -12,8 +12,6 @@ export const initialCommonState: ICommonState = {
         html_url: '',
     },
     repos: [],
-    reposTotalPagesCount: 1,
-    reposLastPageFetched: 1,
     repoInfo: {
         name: '',
         description: '',
@@ -23,5 +21,10 @@ export const initialCommonState: ICommonState = {
     repoContributors: [],
 
     isReposLoading: false,
-    isOrganisationDetailsLoading: true
+    isOrganisationDetailsLoading: true,
+    rateLimits: {
+        rateLimit: 0,
+        rateLimitRemaining: 0,
+        rateLimitResetTimestamp: 0
+    }
 };

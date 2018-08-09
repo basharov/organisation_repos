@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {Config} from '../../config';
+import {Config} from 'src/config';
 import {IOrganisationSelectorViewData} from './interfaces/IOrganisationSelectorViewData';
 
 import {history} from 'src/store/store';

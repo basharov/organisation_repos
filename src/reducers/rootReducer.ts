@@ -7,27 +7,22 @@ import {saveOrganisationInfoReducer} from './saveOrganisationInfoReducer';
 import {saveRepoInfoReducer} from './saveRepoInfoReducer';
 import {saveRepoContributorsReducer} from './saveRepoContributorsReducer';
 import {saveReposReducer} from './saveReposReducer';
-import {fetchMoreReposReducer} from './fetchMoreReposReducer';
+import {saveRateLimitsReducer} from './saveRateLimitsReducer';
 
 export const rootReducer: Reducer<ICommonState> = (state: ICommonState, action: AnyAction): ICommonState => {
 
+    console.log(action)
+
     switch (action.type) {
+
+        case RootActions.RateLimitsUpdated:
+            return saveRateLimitsReducer(state, action);
 
         case RootActions.ReposRequested:
             return fetchReposReducer(state, action);
 
         case RootActions.ReposFulfilled:
             return saveReposReducer(state, action);
-
-
-        case RootActions.MoreReposRequested:
-            return fetchMoreReposReducer(state, action);
-
-        /*
-                case RootActions.MoreReposFulfilled:
-                    return saveMoreReposReducer(state, action);
-
-        */
 
         case RootActions.OrganisationInfoFulfilled:
             return saveOrganisationInfoReducer(state, action);

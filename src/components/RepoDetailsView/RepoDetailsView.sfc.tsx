@@ -1,33 +1,43 @@
 import * as React from 'react';
-import {ContributorsListArea, RepoDetailsViewArea, RepoInformationArea} from './RepoDetailsView.style';
+import {
+    ContributorImage,
+    ContributorLabel, ContributorLink, ContributorName,
+    ContributorsListArea,
+    ContributorsListAreaWrapper,
+    RepoDetailsViewArea,
+    RepoInformationArea
+} from './RepoDetailsView.style';
 import {IRepoDetailsViewData} from './interfaces/IRepoDetailsViewData';
-import {IContributor} from '../../interfaces/IContributor';
+import {IContributor} from 'src/interfaces/IContributor';
 
 export interface IRepoDetailsViewProps {
     data: IRepoDetailsViewData;
-    // actions: IRepoDetailsViewActions;
 }
 
-export const RepoDetailsView = (props: IRepoDetailsViewProps) => {
+export const RepoDetailsView = (props: IRepoDetailsViewProps) => (
+    <RepoDetailsViewArea>
 
-    return (
-        <RepoDetailsViewArea>
+        <RepoInformationArea>
+            <p>{props.data.repoInfo.name}</p>
+            <p>{props.data.repoInfo.description}</p>
+        </RepoInformationArea>
 
-            <RepoInformationArea>
-                <p>{props.data.repoInfo.name}</p>
-                <p>{props.data.repoInfo.description}</p>
-            </RepoInformationArea>
-
+        <ContributorsListAreaWrapper>
             <ContributorsListArea>
                 {getContributorsList(props.data.repoContributors)}
             </ContributorsListArea>
+        </ContributorsListAreaWrapper>
 
-        </RepoDetailsViewArea>
-    );
-};
+    </RepoDetailsViewArea>
+);
 
 const getContributorsList = (repoContributors: IContributor[]) => {
     return repoContributors.map((contributor, index: number) => {
-        return <p key={index}>{contributor.login}</p>;
+        return <ContributorLabel key={index}>
+            <ContributorLink target={'blank'} href={contributor.html_url}>
+                <ContributorImage src={contributor.avatar_url} alt={contributor.login}/>
+                <ContributorName>{contributor.login}</ContributorName>
+            </ContributorLink>
+        </ContributorLabel>;
     });
 };

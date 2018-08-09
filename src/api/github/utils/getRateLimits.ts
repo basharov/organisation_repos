@@ -1,4 +1,4 @@
-import {IRateLimits} from '../../../interfaces/IRateLimits';
+import {IRateLimits} from 'src/interfaces/IRateLimits';
 
 export const getRateLimits = (headers: Headers): IRateLimits => {
     const rateLimit = Number(headers.get('X-RateLimit-Limit'));

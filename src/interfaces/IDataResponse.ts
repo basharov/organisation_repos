@@ -14,7 +14,9 @@ export interface IPaging {
 }
 
 export interface IDataResponse<T> {
-    data: T;
-    limits: IRateLimits;
-    paging: IPaging | null;
+    isCached: boolean;
+    limits?: IRateLimits;
+    data?: T;
+    error?: any;
+    paging?: IPaging;
 }

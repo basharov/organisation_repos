@@ -1,13 +1,12 @@
 import {Action, Dispatch} from 'redux';
 import {RootActions} from '../../actions/IRootActions';
-import {ISidebarViewActions} from '../../components/SidebarView/interfaces/ISidebarViewActions';
 import {store} from 'src/store/store';
+import {ISidebarViewActions} from 'src/components/SidebarView/interfaces/ISidebarViewActions';
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: ISidebarViewActions } => {
     return {
         actions: {
             requestRepoInfoAction: (payload: any) => {
-                console.log(payload);
                 dispatch<any>({type: RootActions.RepoInfoRequested, payload});
             },
             fetchReposAction: (organisationId: string) => {
@@ -15,8 +14,6 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: ISide
                 const state = store.getState();
 
                 let pageToFetch;
-
-                console.log(state.reposLastPageFetched, state.reposTotalPagesCount)
 
                 if (state.reposLastPageFetched < state.reposTotalPagesCount) {
                     pageToFetch = state.reposLastPageFetched += 1;

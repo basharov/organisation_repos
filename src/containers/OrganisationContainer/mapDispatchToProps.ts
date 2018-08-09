@@ -10,10 +10,6 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>): { actions: IOrga
             },
             requestRepoInfoAction: (payload: any) => {
                 dispatch<any>({type: RootActions.RepoInfoRequested, payload});
-            },
-            pushRouteToOrganisationPage: (payload: any) => {
-                console.log(payload);
-                // dispatch<any>({type: RootActions.RepoInfoRequested, payload});
             }
         }
     };

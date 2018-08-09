@@ -1,9 +1,9 @@
-import {ICommonState} from '../interfaces/ICommonState';
+import {ICommonState} from 'src/interfaces/ICommonState';
 import {AnyAction} from 'redux';
 
 export const saveRepoContributorsReducer = (state: ICommonState, action: AnyAction): ICommonState => {
     return {
         ...state,
-        repoContributors: action.payload
+        repoContributors: action.payload.data
     };
 };

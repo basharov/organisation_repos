@@ -1,5 +1,5 @@
-import {IOrganisationViewData} from '../../components/OrganisationView/interfaces/IOrganisationViewData';
-import {ICommonState} from '../../interfaces/ICommonState';
+import {ICommonState} from 'src/interfaces/ICommonState';
+import {IOrganisationViewData} from 'src/components/OrganisationView/interfaces/IOrganisationViewData';
 
 export const mapStateToProps = (state: ICommonState): { data: IOrganisationViewData } => {
     return {
@@ -8,7 +8,8 @@ export const mapStateToProps = (state: ICommonState): { data: IOrganisationViewD
             isOrganisationDetailsLoading: state.isOrganisationDetailsLoading,
             repos: state.repos,
             repoInfo: state.repoInfo,
-            repoContributors: state.repoContributors
+            repoContributors: state.repoContributors,
+            rateLimits: state.rateLimits,
         }
     };
 };
