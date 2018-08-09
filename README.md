@@ -27,6 +27,34 @@ In the simplest case, if you don't copy anything to clipboard during compilation
 3. When it compiles and you run the app, it redirects you to default organisation page, now it's facebook.
 Look at some gifs in this repo inside `gifs` folder to see how it works on my macbook and don't claim it doesn't work on yours ;).
 
+
+## Features
+
+#### Integrated React Router
+Organisations have their own urls like `/org/facebook`. This url shows some info about the organisation and a list of its repos sorted by watchers count and showing them. 
+By clicking a repo you make the app load information about the repo that shows on the top right of the page and contributors list on the bottom right with links to their profiles and avatars.
+
+Repo route looks like `/org/facebook/react`.
+
+Selected repo in the list is highlighted.
+
+When you choose another organisation from the dropdown selector on the top right, the route changes and respective organisation data loads.
+
+#### Caching requests
+As we suppose that repos and organisation data doesn't change often, we can use caching technique so that when we change the organisation and it's already in cache, dont' run an extra request, but rather load it from local data storage.
+So, if a request to some endpoint happened before, and is addressed now, it runs quicker.
+
+Requests to these endpoints are cache-enabled:
+- Organisation details
+- Organisation repos list
+- Repo details
+- Repos contributors list  
+
+
+#### Details about remaining requests amount
+If you don't use an access token (described below), you might face issues with running out of requests limit. 
+To help you with understanding of how many requests you have remaining during the current time period, you can have a a look at the header of the app to see some details about it.
+
 ## Github API requests limitations
 
 Github allows you to run unauthorized API requests but it's just about 60 requests per hour which is quite a low number.
